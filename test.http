@@ -6,8 +6,9 @@ POST http://localhost:8000/api/v1/users
 Content-Type: application/json
 
 {
-    "fName":"Adamghat",
-    "lName":"Dhading"
+    "task":"Playing",
+    "hr":"70",
+    "type":"bad"
 }
 
 ###PATCH Method
@@ -15,10 +16,10 @@ PATCH http://localhost:8000/api/v1/users/
 Content-Type: application/json
 
 {
-    "_id": "67b31f6e4c293a1000dad319",
-    "fName":"Sanjay",
-    "lName":"Karki"
+    "_id": "67b3307ac3ca631a1fadf1c5",
+    
+    "type":"entry"
 }
 
 ### Delete Method
-DELETE http://localhost:8000/api/v1/users/67b3267622e8693a7c1bc990
+DELETE http://localhost:8000/api/v1/users/67b330c67782ca7f612dc508

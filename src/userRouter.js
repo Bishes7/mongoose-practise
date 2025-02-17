@@ -1,19 +1,16 @@
 import express from "express";
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+
+import { deleteData, getData, insertData, updateData } from "./Schema.js";
 
 const router = express.Router();
 
 // Lets create the db  in the database\
 
-const userSchema = new mongoose.Schema({}, { strict: false });
-const tableName = mongoose.model("list", userSchema);
-
 // Using the CRUD methods
 
 // GET Method
 router.get("/", async (req, res) => {
-  const savedData = await tableName.find();
+  const savedData = await getData();
   res.json({
     message: "Get method implemented",
     savedData,
@@ -22,21 +19,26 @@ router.get("/", async (req, res) => {
 
 // POST Mrthod
 router.post("/", async (req, res) => {
-  const insertedData = await tableName(req.body).save();
-  console.log(req.body);
-  res.json({
-    message: "Post method implemented",
-    insertedData,
-  });
+  try {
+    const insertedData = await insertData(req.body);
+    console.log(req.body);
+    res.json({
+      message: "Post method implemented",
+      insertedData,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.json({
+      message: "Error",
+    });
+  }
 });
 
 // Patch Method
 
 router.patch("/", async (req, res) => {
   const { _id, ...rest } = req.body;
-  const updatedData = await tableName.findByIdAndUpdate(_id, rest, {
-    new: true,
-  });
+  const updatedData = await updateData(_id, rest);
   res.json({
     message: "Patch method implemented",
     updatedData,
@@ -46,7 +48,7 @@ router.patch("/", async (req, res) => {
 // Delete Method
 router.delete("/:_id", async (req, res) => {
   const { _id } = req.params;
-  const deletedTask = await tableName.findByIdAndDelete(_id);
+  const deletedTask = await deleteData(_id);
   res.json({
     message: "Delete Method implemented",
     deletedTask,
