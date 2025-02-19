@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    hr: {
+    hours: {
       type: Number,
       max: 100,
       min: 1,
