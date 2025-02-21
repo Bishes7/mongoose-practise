@@ -17,5 +17,3 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1/users", userRouter);
-
-// Using cors as the middleware

@@ -12,6 +12,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const savedData = await getData();
   res.json({
+    status: "success",
     message: "Get method implemented",
     savedData,
   });
@@ -23,6 +24,7 @@ router.post("/", async (req, res) => {
     const insertedData = await insertData(req.body);
     console.log(req.body);
     res.json({
+      status: "success",
       message: "Post method implemented",
       insertedData,
     });
