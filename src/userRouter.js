@@ -31,7 +31,8 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.json({
-      message: "Error",
+      status: "error",
+      message: error.message,
     });
   }
 });
@@ -39,12 +40,21 @@ router.post("/", async (req, res) => {
 // Patch Method
 
 router.patch("/", async (req, res) => {
-  const { _id, ...rest } = req.body;
-  const updatedData = await updateData(_id, rest);
-  res.json({
-    message: "Patch method implemented",
-    updatedData,
-  });
+  try {
+    const { _id, ...rest } = req.body;
+    console.log(req.body);
+    const updatedData = await updateData(_id, rest);
+    res.json({
+      status: "success",
+      message: "Your data has been updated successfully",
+      updatedData,
+    });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
 });
 
 // Delete Method

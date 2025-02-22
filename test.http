@@ -18,7 +18,7 @@ Content-Type: application/json
 {
     "_id": "67b3307ac3ca631a1fadf1c5",
     
-    "type":"entry"
+    "type":"bad"
 }
 
 ### Delete Method
