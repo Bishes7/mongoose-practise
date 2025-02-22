@@ -44,6 +44,7 @@ router.patch("/", async (req, res) => {
     const { _id, ...rest } = req.body;
     console.log(req.body);
     const updatedData = await updateData(_id, rest);
+
     res.json({
       status: "success",
       message: "Your data has been updated successfully",
