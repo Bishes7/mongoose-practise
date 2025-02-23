@@ -63,7 +63,8 @@ router.delete("/:_id", async (req, res) => {
   const { _id } = req.params;
   const deletedTask = await deleteData(_id);
   res.json({
-    message: "Delete Method implemented",
+    status: "success",
+    message: "Data has been deleted",
     deletedTask,
   });
 });
