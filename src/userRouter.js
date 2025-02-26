@@ -59,13 +59,25 @@ router.patch("/", async (req, res) => {
 });
 
 // Delete Method
-router.delete("/:_id", async (req, res) => {
-  const { _id } = req.params;
-  const deletedTask = await deleteData(_id);
-  res.json({
-    status: "success",
-    message: "Data has been deleted",
-    deletedTask,
-  });
+router.delete("/", async (req, res) => {
+  try {
+    const deletedTask = await deleteData(req.body);
+    console.log(deletedTask);
+
+    deletedTask?.deletedCount
+      ? res.json({
+          status: "success",
+          message: "Data has been deleted",
+        })
+      : res.json({
+          status: "error",
+          message: "Error deleting items",
+        });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: "Error deleting items",
+    });
+  }
 });
 export default router;

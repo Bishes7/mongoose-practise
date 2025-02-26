@@ -40,6 +40,10 @@ export const updateData = (_id, rest) => {
   });
 };
 
-export const deleteData = (_id) => {
-  return tableName.findByIdAndDelete(_id);
+// export const deleteData = (_id) => {
+//   return tableName.findByIdAndDelete(_id);
+// };
+
+export const deleteData = (ids) => {
+  return tableName.deleteMany({ _id: { $in: ids } });
 };

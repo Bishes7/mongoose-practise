@@ -6,9 +6,9 @@ POST http://localhost:8000/api/v1/users
 Content-Type: application/json
 
 {
-    "task":"Playing",
-    "hr":"70",
-    "type":"bad"
+    "task":"Eating",
+    "hours": 5
+    
 }
 
 ###PATCH Method
@@ -22,4 +22,9 @@ Content-Type: application/json
 }
 
 ### Delete Method
-DELETE http://localhost:8000/api/v1/users/67b330c67782ca7f612dc508
+DELETE http://localhost:8000/api/v1/users/
+Content-Type: application/json
+
+[
+   "67b8559e9db5292fc3740691","67b855d39db5292fc37406a2"
+]
